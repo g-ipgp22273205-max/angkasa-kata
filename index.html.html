@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANGKASA KATA — Misi Penyelamat Galaksi</title>
+<style>
+:root{--navy:#101b3d;--navy2:#172957;--purple:#7656d8;--cyan:#68e1fd;--yellow:#ffd166;--pink:#ff7eb6;--white:#f8fbff;--muted:#b8c5e8;--green:#55d6a3;--card:rgba(255,255,255,.09);--line:rgba(255,255,255,.16)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 12% 12%,#293a78 0,transparent 30%),radial-gradient(circle at 90% 30%,#43286f 0,transparent 28%),linear-gradient(150deg,#0b1430,#17224b 60%,#10152f);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:radial-gradient(2px 2px at 20px 30px,#fff 45%,transparent 50%),radial-gradient(1px 1px at 90px 80px,#fff 45%,transparent 50%),radial-gradient(2px 2px at 160px 130px,#9ee8ff 45%,transparent 50%);background-size:190px 170px;z-index:-1}
+header{max-width:1120px;margin:auto;padding:20px 22px 8px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:1.4px}.brand-icon{font-size:30px}
+.top-pill{border:1px solid var(--line);background:#ffffff0c;padding:8px 12px;border-radius:999px;color:var(--muted);font-size:.82rem}
+main{max-width:1120px;margin:0 auto;padding:12px 22px 50px}
+.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:28px;padding:clamp(24px,5vw,54px);background:linear-gradient(120deg,rgba(69,84,170,.48),rgba(34,27,75,.72));display:grid;grid-template-columns:1.35fr .65fr;align-items:center;gap:20px;box-shadow:0 24px 70px #050a1f55}
+.eyebrow{color:var(--cyan);font-weight:800;font-size:.78rem;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(2.3rem,6vw,4.7rem);line-height:.98;margin:13px 0 16px;letter-spacing:-2px}
+h1 span{color:var(--yellow)}
+.hero p{max-width:620px;color:#d9e3ff;font-size:1.05rem;line-height:1.7}
+.hero-art{text-align:center;font-size:clamp(6rem,15vw,10rem);filter:drop-shadow(0 10px 22px #0005);animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-9px) rotate(2deg)}}
+.btn{border:0;cursor:pointer;padding:12px 18px;border-radius:14px;font-weight:800;font-size:.95rem;transition:transform .15s,filter .15s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}.primary{background:linear-gradient(135deg,var(--yellow),#ffb84d);color:#282144}.secondary{background:#ffffff12;color:white;border:1px solid var(--line)}.success{background:var(--green);color:#102b36}.small{padding:8px 12px;font-size:.86rem}
+.progress-wrap{margin:24px 0 18px;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.88rem}.progress{height:9px;background:#ffffff17;border-radius:99px;overflow:hidden;flex:1}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));transition:width .3s}
+.phase-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0 24px}
+.phase-tab{cursor:pointer;border:1px solid var(--line);border-radius:16px;background:#ffffff08;color:#d9e3ff;padding:14px 10px;text-align:left;min-height:100px;transition:.2s}
+.phase-tab .num{display:block;color:var(--cyan);font-size:.76rem;font-weight:900;letter-spacing:1px;margin-bottom:7px}.phase-tab strong{display:block;font-size:.91rem}.phase-tab .emoji{font-size:1.35rem;display:block;margin-bottom:6px}.phase-tab.active{background:linear-gradient(145deg,#7459d9aa,#3f73b899);border-color:#9cafff;box-shadow:0 0 0 2px #9b9dff22}.phase-tab.done:after{content:" ✓";color:var(--green);font-weight:900}
+.panel{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#ffffff0d,#ffffff05);padding:clamp(20px,4vw,34px);box-shadow:0 20px 55px #050a1f2b}
+.phase-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}.phase-icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:#8a77ff2b;font-size:1.8rem;flex-shrink:0}
+h2{font-size:clamp(1.6rem,3vw,2.25rem);margin:0 0 7px;letter-spacing:-.6px}.subtitle{margin:0;color:var(--muted);line-height:1.6}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}.card h3{margin:0 0 10px;font-size:1.05rem}.card p,.card li{color:#dbe4ff;line-height:1.65}.card ul{padding-left:20px;margin-bottom:0}
+.callout{padding:14px 16px;border-radius:14px;background:#68e1fd12;border:1px solid #68e1fd35;color:#e7faff;line-height:1.65;margin:15px 0}
+.word-chip{display:inline-block;background:#ffd16620;border:1px solid #ffd16660;color:#ffe4a0;padding:4px 9px;border-radius:9px;font-weight:800;margin:3px}
+label{display:block;font-weight:750;margin:12px 0 7px}
+input[type=text],textarea,select{width:100%;background:#0e1838;border:1px solid #6575a7;color:#fff;border-radius:12px;padding:12px 13px;font:inherit;outline:none}
+textarea{min-height:100px;resize:vertical;line-height:1.55}input:focus,textarea:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #68e1fd1c}
+.option-list{display:grid;gap:9px;margin:12px 0}.option{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid var(--line);background:#ffffff08;border-radius:12px;cursor:pointer;line-height:1.5}.option input{margin-top:5px;accent-color:var(--cyan)}.option.correct{border-color:var(--green);background:#55d6a318}.option.wrong{border-color:#ff7e91;background:#ff7e9118}
+.feedback{margin-top:10px;padding:12px;border-radius:12px;line-height:1.5;display:none}.feedback.show{display:block}.feedback.good{background:#55d6a31b;color:#a6ffdb;border:1px solid #55d6a355}.feedback.bad{background:#ff7e911b;color:#ffd1d8;border:1px solid #ff7e9155}
+.question{border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0;background:#ffffff06}.question p{line-height:1.65;margin-top:0}
+.output{white-space:pre-wrap;line-height:1.75;background:#0b1430;border:1px dashed #7f91c6;border-radius:15px;padding:16px;min-height:65px;color:#eff5ff}
+.footer-actions{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}.notice{font-size:.84rem;color:var(--muted);line-height:1.55}
+footer{text-align:center;color:#91a0cb;font-size:.8rem;padding:28px 10px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#f7fbff;color:#172044;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 10px 40px #0006;display:none;z-index:5}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero-art{font-size:6rem;order:-1}.phase-nav{grid-template-columns:repeat(2,1fr)}.phase-tab{min-height:85px}.grid2{grid-template-columns:1fr}header{align-items:flex-start}.top-pill{max-width:45%;text-align:center}}
+@media(max-width:420px){.phase-nav{grid-template-columns:1fr 1fr}.phase-tab{padding:11px}.hero-art{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="brand-icon">🚀</span><span>ANGKASA KATA</span></div>
+  <div class="top-pill">BAHASA MELAYU · TAHUN 4</div>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Misi pembelajaran trialogikal</div>
+      <h1>MISI PENYELAMAT<br><span>GALAKSI</span></h1>
+      <p>Hai, angkasawan! Kapal angkasa kita memerlukan tenaga bahasa untuk mengembara. Selesaikan lima misi kata hubung: teroka, kongsi, bina, cipta dan refleksi.</p>
+      <button class="btn primary" onclick="goToPhase(0)">🚀 Mulakan misi</button>
+    </div>
+    <div class="hero-art" aria-label="Angkasawan">🧑‍🚀</div>
+  </section>
+
+  <div class="progress-wrap"><span id="progressText">Kemajuan misi: 0 daripada 5</span><div class="progress"><div id="progressBar"></div></div></div>
+  <nav class="phase-nav" aria-label="Lima fasa pembelajaran">
+    <button class="phase-tab active" data-phase="0" onclick="goToPhase(0)"><span class="num">FASA 01</span><span class="emoji">🔭</span><strong>Teroka</strong></button>
+    <button class="phase-tab" data-phase="1" onclick="goToPhase(1)"><span class="num">FASA 02</span><span class="emoji">📡</span><strong>Kongsi</strong></button>
+    <button class="phase-tab" data-phase="2" onclick="goToPhase(2)"><span class="num">FASA 03</span><span class="emoji">🧠</span><strong>Bina ilmu</strong></button>
+    <button class="phase-tab" data-phase="3" onclick="goToPhase(3)"><span class="num">FASA 04</span><span class="emoji">🪐</span><strong>Cipta cerita</strong></button>
+    <button class="phase-tab" data-phase="4" onclick="goToPhase(4)"><span class="num">FASA 05</span><span class="emoji">📝</span><strong>Refleksi</strong></button>
+  </nav>
+
+  <section class="panel" id="phasePanel" aria-live="polite"></section>
+  <footer>ANGKASA KATA · Belajar kata hubung sambil meneroka galaksi ✨<br>Direka untuk aktiviti Bahasa Melayu Tahun 4.</footer>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+const phases = [
+{title:"Ekspedisi Angkasa",subtitle:"Fasa 1 · Meneroka — kenali kata hubung melalui contoh dalam dunia angkasa.",icon:"🔭"},
+{title:"Pusat Komunikasi Kosmos",subtitle:"Fasa 2 · Kongsi maklumat — bincangkan penemuan dengan rakan dan kumpulkan idea.",icon:"📡"},
+{title:"Makmal Bahasa Galaksi",subtitle:"Fasa 3 · Pembinaan pengetahuan — susun maklumat dan uji kefahaman.",icon:"🧠"},
+{title:"Cipta Cerita Angkasa",subtitle:"Fasa 4 · Penciptaan artefak — hasilkan cerita pendek yang boleh dikongsi dengan rakan.",icon:"🪐"},
+{title:"Log Refleksi Angkasawan",subtitle:"Fasa 5 · Refleksi — fikirkan apa yang telah dipelajari dan perkara yang mahu dibaiki.",icon:"📝"}
+];
+let current=0; const completed=new Set(); let sharedEntries=[];
+function goToPhase(n){current=n;renderPhase();document.querySelectorAll('.phase-tab').forEach((b,i)=>b.classList.toggle('active',i===n));document.getElementById('phasePanel').scrollIntoView({behavior:'smooth',block:'start'});}
+function updateProgress(){document.getElementById('progressText').textContent=`Kemajuan misi: ${completed.size} daripada 5`;document.getElementById('progressBar').style.width=(completed.size*20)+'%';document.querySelectorAll('.phase-tab').forEach((b,i)=>b.classList.toggle('done',completed.has(i)));}
+function markDone(n){completed.add(n);updateProgress();showToast('Misi selesai! Teruskan pengembaraan, angkasawan.');}
+function showToast(t){let el=document.getElementById('toast');el.textContent=t;el.style.display='block';setTimeout(()=>el.style.display='none',2200);}
+function renderPhase(){
+ const p=document.getElementById('phasePanel');
+ const head=`<div class="phase-head"><div class="phase-icon">${phases[current].icon}</div><div><h2>${phases[current].title}</h2><p class="subtitle">${phases[current].subtitle}</p></div></div>`;
+ let body='';
+ if(current===0) body=phase1();
+ if(current===1) body=phase2();
+ if(current===2) body=phase3();
+ if(current===3) body=phase4();
+ if(current===4) body=phase5();
+ const prev=current>0?`<button class="btn secondary" onclick="goToPhase(${current-1})">← Fasa sebelumnya</button>`:'<span></span>';
+ const next=current<4?`<button class="btn primary" onclick="markDone(${current});goToPhase(${current+1})">Selesai & fasa seterusnya →</button>`:`<button class="btn primary" onclick="markDone(4);showToast('Tahniah! Semua misi telah diterokai!')">Selesaikan semua misi ✨</button>`;
+ p.innerHTML=head+body+`<div class="footer-actions">${prev}${next}</div>`;
+}
+function phase1(){return `
+<div class="grid2">
+ <div class="card"><h3>📘 Apa itu kata hubung?</h3><p><b>Kata hubung</b> ialah perkataan yang menghubungkan perkataan, frasa atau ayat.</p><p>Contoh kata hubung yang akan kita gunakan:</p><div><span class="word-chip">dan</span><span class="word-chip">atau</span><span class="word-chip">tetapi</span><span class="word-chip">kerana</span><span class="word-chip">sambil</span></div></div>
+ <div class="card"><h3>🛰️ Lihat contoh</h3><ul><li>Aina membawa peta <b>dan</b> kompas.</li><li>Angkasawan mahu ke Marikh <b>atau</b> ke Bulan.</li><li>Roket itu kecil <b>tetapi</b> laju.</li><li>Ali memakai sut <b>kerana</b> angkasa sangat sejuk.</li><li>Aina melambai <b>sambil</b> tersenyum.</li></ul></div>
+</div>
+<div class="callout">💡 <b>Petunjuk angkasawan:</b> Baca ayat dengan teliti. Kata hubung membantu kita memahami hubungan antara maklumat.</div>
+<div class="question"><p><b>Cabaran penerokaan:</b> “Ravi memeriksa roket <u>sebelum</u> berlepas.” Apakah perkataan yang menghubungkan dua perbuatan dalam ayat ini?</p><div class="option-list" id="q1"><label class="option"><input type="radio" name="explore" value="dan"> dan</label><label class="option"><input type="radio" name="explore" value="sebelum"> sebelum</label><label class="option"><input type="radio" name="explore" value="roket"> roket</label></div><button class="btn secondary" onclick="checkExplore()">Semak jawapan</button><div class="feedback" id="exploreFeedback"></div></div>
+<p class="notice">Selepas meneroka, ceritakan kepada rakan satu kata hubung baharu yang anda temui.</p>`}
+function checkExplore(){const s=document.querySelector('input[name="explore"]:checked');const f=document.getElementById('exploreFeedback');f.className='feedback show '+(s&&s.value==='sebelum'?'good':'bad');f.textContent=s&&s.value==='sebelum'?'Tepat! “Sebelum” menghubungkan perbuatan mengikut urutan masa.':'Cuba lagi. Cari perkataan yang menunjukkan urutan masa.';if(s&&s.value==='sebelum')markDone(0);}
+function phase2(){return `
+<div class="callout">👩‍🚀 <b>Arahan:</b> Berbincang dengan seorang rakan atau kumpulan. Pilih satu kata hubung, bina ayat bertema angkasa dan catatkan penemuan anda. Kemudian baca idea rakan.</div>
+<div class="grid2"><div class="card"><h3>🗣️ Soalan perbincangan</h3><ul><li>Apakah kata hubung yang kamu pilih?</li><li>Apakah dua maklumat yang dihubungkan?</li><li>Mengapa kata hubung itu sesuai?</li></ul></div><div class="card"><h3>📡 Contoh perkongsian</h3><p>“Kami memilih <b>tetapi</b> dalam ayat: Roket itu kecil tetapi kuat. Kata hubung ini menunjukkan pertentangan.”</p></div></div>
+<label for="team">Nama murid / kumpulan</label><input id="team" type="text" placeholder="Contoh: Kumpulan Bintang">
+<label for="shareWord">Kata hubung pilihan</label><select id="shareWord"><option value="">-- Pilih kata hubung --</option><option>dan</option><option>atau</option><option>tetapi</option><option>kerana</option><option>sambil</option><option>sebelum</option><option>selepas</option></select>
+<label for="shareSentence">Ayat dan penjelasan kumpulan</label><textarea id="shareSentence" placeholder="Tulis ayat bertema angkasa dan jelaskan fungsi kata hubung yang dipilih."></textarea>
+<button class="btn primary" onclick="addShare()">Tambah ke papan perkongsian</button>
+<div style="margin-top:20px"><h3>🧑‍🚀 Papan perkongsian kelas</h3><div id="shareBoard" class="grid2"></div><p class="notice">Nota: papan ini menyimpan catatan pada peranti dan pelayar yang sedang digunakan sahaja. Untuk berkongsi antara peranti, bincangkan catatan secara lisan atau gunakan Google Forms/Padlet.</p></div>`}
+function addShare(){const team=document.getElementById('team').value.trim()||'Angkasawan';const word=document.getElementById('shareWord').value;const sentence=document.getElementById('shareSentence').value.trim();if(!word||!sentence){showToast('Pilih kata hubung dan tulis catatan dahulu.');return;}sharedEntries.unshift({team,word,sentence});document.getElementById('shareWord').value='';document.getElementById('shareSentence').value='';drawShareBoard();markDone(1);}
+function drawShareBoard(){const b=document.getElementById('shareBoard');if(!b)return;b.innerHTML=sharedEntries.length?sharedEntries.map(x=>`<div class="card"><h3>📡 ${escapeHtml(x.team)}</h3><span class="word-chip">${escapeHtml(x.word)}</span><p>${escapeHtml(x.sentence)}</p></div>`).join(''):'<div class="card"><p>Belum ada catatan. Jadilah kumpulan pertama yang berkongsi!</p></div>';}
+function phase3(){return `
+<div class="callout">🧠 Gabungkan idea daripada penerokaan dan perbincangan. Lengkapkan latihan untuk menunjukkan bahawa kamu memahami fungsi kata hubung.</div>
+<div class="question"><p><b>1.</b> Angkasawan membawa makanan ___ air.</p><div class="option-list"><label class="option"><input type="radio" name="b1" value="tetapi"> tetapi</label><label class="option"><input type="radio" name="b1" value="dan"> dan</label><label class="option"><input type="radio" name="b1" value="kerana"> kerana</label></div></div>
+<div class="question"><p><b>2.</b> Kita boleh meneroka Bulan ___ Marikh.</p><div class="option-list"><label class="option"><input type="radio" name="b2" value="atau"> atau</label><label class="option"><input type="radio" name="b2" value="sambil"> sambil</label><label class="option"><input type="radio" name="b2" value="tetapi"> tetapi</label></div></div>
+<div class="question"><p><b>3.</b> Angkasawan memakai sut ___ suhu di angkasa sangat rendah.</p><div class="option-list"><label class="option"><input type="radio" name="b3" value="kerana"> kerana</label><label class="option"><input type="radio" name="b3" value="dan"> dan</label><label class="option"><input type="radio" name="b3" value="atau"> atau</label></div></div>
+<div class="question"><p><b>4.</b> Pilih ayat yang menunjukkan pertentangan.</p><div class="option-list"><label class="option"><input type="radio" name="b4" value="a"> Roket itu laju dan selamat.</label><label class="option"><input type="radio" name="b4" value="b"> Roket itu kecil tetapi berkuasa.</label><label class="option"><input type="radio" name="b4" value="c"> Roket itu berhenti kerana hujan.</label></div></div>
+<button class="btn primary" onclick="checkQuiz()">Semak semua jawapan</button><div class="feedback" id="quizFeedback"></div>
+<div class="card" style="margin-top:16px"><h3>🧩 Ingat fungsi kata hubung</h3><p><b>dan</b> — tambahan · <b>atau</b> — pilihan · <b>tetapi</b> — pertentangan · <b>kerana</b> — sebab · <b>sambil</b> — dua perbuatan berlaku serentak.</p></div>`}
+function checkQuiz(){const answers={b1:'dan',b2:'atau',b3:'kerana',b4:'b'};let score=0,answered=0;Object.keys(answers).forEach(k=>{let s=document.querySelector(`input[name="${k}"]:checked`);if(s){answered++;if(s.value===answers[k])score++;}});const f=document.getElementById('quizFeedback');f.className='feedback show '+(score===4?'good':'bad');f.textContent=`Markah kamu: ${score}/4. ${answered<4?'Jawab semua soalan untuk menyemak keseluruhan latihan. ':''}${score===4?'Hebat! Kamu telah menguasai misi ini.': 'Semak semula fungsi kata hubung dan cuba lagi.'}`;if(score===4)markDone(2);}
+function phase4(){return `
+<div class="callout">🪐 <b>Misi penciptaan artefak:</b> Cipta cerita pendek tentang pengembaraan angkasawan. Gunakan sekurang-kurangnya <b>tiga kata hubung</b>. Selepas siap, baca cerita kepada rakan dan minta mereka mengenal pasti kata hubung yang digunakan.</div>
+<div class="grid2"><div class="card"><h3>✍️ Mula dengan idea ini</h3><ul><li>Siapakah angkasawan kamu?</li><li>Ke planet manakah dia pergi?</li><li>Apakah masalah yang dihadapi?</li><li>Bagaimanakah masalah itu diselesaikan?</li></ul></div><div class="card"><h3>🌟 Kata hubung bantuan</h3><div><span class="word-chip">dan</span><span class="word-chip">atau</span><span class="word-chip">tetapi</span><span class="word-chip">kerana</span><span class="word-chip">sambil</span><span class="word-chip">sebelum</span><span class="word-chip">selepas</span></div><p class="notice">Cuba gunakan kata hubung dengan fungsi yang betul, bukan sekadar memasukkannya ke dalam cerita.</p></div></div>
+<label for="storyTitle">Tajuk cerita</label><input id="storyTitle" type="text" placeholder="Contoh: Pengembaraan ke Planet Biru">
+<label for="storyName">Nama pencipta / kumpulan</label><input id="storyName" type="text" placeholder="Nama angkasawan atau kumpulan">
+<label for="storyText">Cerita angkasa kamu</label><textarea id="storyText" style="min-height:180px" placeholder="Pada suatu hari, Aina menaiki roket dan ..."></textarea>
+<div class="footer-actions" style="justify-content:flex-start"><button class="btn primary" onclick="previewStory()">Jana kad cerita</button><button class="btn secondary" onclick="downloadStory()">Muat turun cerita (.txt)</button></div>
+<div id="storyPreview" style="margin-top:18px"></div>
+<p class="notice">Artefak yang dihasilkan ialah cerita digital murid. Untuk bukti tugasan, simpan cerita dan ambil tangkap layar hasil murid.</p>`}
+function previewStory(){const title=document.getElementById('storyTitle').value.trim()||'Pengembaraan Angkasa';const name=document.getElementById('storyName').value.trim()||'Angkasawan Muda';const text=document.getElementById('storyText').value.trim();if(!text){showToast('Tulis cerita dahulu sebelum menjana kad.');return;}const words=['dan','atau','tetapi','kerana','sambil','sebelum','selepas'];const found=words.filter(w=>new RegExp('\\b'+w+'\\b','i').test(text));const box=document.getElementById('storyPreview');box.innerHTML=`<div class="card" id="storyCard"><div style="font-size:2rem">🚀 ✨ 🪐</div><h3>${escapeHtml(title)}</h3><p class="notice">Karya oleh ${escapeHtml(name)}</p><div class="output">${escapeHtml(text)}</div><p><b>Kata hubung yang dikesan:</b> ${found.length?found.map(w=>`<span class="word-chip">${w}</span>`).join(''):'Belum dikesan — cuba masukkan kata hubung.'}</p><p class="notice">Semak sendiri sama ada setiap kata hubung digunakan dengan betul.</p></div>`;if(found.length>=3)markDone(3);else showToast('Cuba gunakan sekurang-kurangnya tiga kata hubung.');}
+function downloadStory(){const title=document.getElementById('storyTitle').value.trim()||'Pengembaraan Angkasa';const name=document.getElementById('storyName').value.trim()||'Angkasawan Muda';const text=document.getElementById('storyText').value.trim();if(!text){showToast('Tulis cerita dahulu sebelum memuat turun.');return;}const blob=new Blob([title+'\\nKarya oleh: '+name+'\\n\\n'+text],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='cerita-angkasa.txt';a.click();URL.revokeObjectURL(a.href);}
+function phase5(){return `
+<div class="callout">📝 Tahniah, angkasawan! Sebelum kembali ke Bumi, fikirkan pengalaman kamu. Jawab dengan jujur supaya kamu tahu perkara yang telah dikuasai dan perkara yang perlu dilatih lagi.</div>
+<label for="learned">1. Apakah perkara baharu yang kamu pelajari?</label><textarea id="learned" placeholder="Hari ini saya belajar bahawa..."></textarea>
+<label for="easy">2. Kata hubung yang paling mudah saya gunakan ialah...</label><input id="easy" type="text" placeholder="Contoh: dan, kerana">
+<label for="challenge">3. Apakah cabaran yang kamu hadapi?</label><textarea id="challenge" placeholder="Saya masih perlu berlatih..."></textarea>
+<label for="teamwork">4. Bagaimanakah kamu membantu kumpulan?</label><textarea id="teamwork" placeholder="Saya berkongsi idea dengan..."></textarea>
+<label for="rating">5. Sejauh manakah kamu faham kata hubung?</label><select id="rating"><option value="">-- Pilih satu --</option><option>Saya sudah faham dan boleh membina ayat sendiri.</option><option>Saya faham tetapi masih perlukan sedikit latihan.</option><option>Saya perlukan bantuan dan penerangan lagi.</option></select>
+<div class="footer-actions" style="justify-content:flex-start"><button class="btn primary" onclick="makeReflection()">Simpan refleksi sebagai teks</button><button class="btn secondary" onclick="downloadReflection()">Muat turun refleksi (.txt)</button></div>
+<div id="reflectionOutput" style="margin-top:18px"></div>
+<p class="notice">Refleksi ini disimpan sebagai fail pada peranti apabila dimuat turun. Jika guru perlu mengumpulkan semua refleksi, gunakan Google Forms sebagai pilihan tambahan.</p>`}
+function makeReflection(){const fields=[['Perkara baharu',document.getElementById('learned').value],['Kata hubung mudah',document.getElementById('easy').value],['Cabaran',document.getElementById('challenge').value],['Sumbangan kumpulan',document.getElementById('teamwork').value],['Tahap kefahaman',document.getElementById('rating').value]];if(fields.some(x=>!x[1].trim())){showToast('Lengkapkan semua bahagian refleksi dahulu.');return;}const text=fields.map(x=>x[0]+': '+x[1]).join('\\n\\n');document.getElementById('reflectionOutput').innerHTML='<div class="card"><h3>📝 Log refleksi kamu</h3><div class="output">'+escapeHtml(text)+'</div></div>';markDone(4);}
+function downloadReflection(){makeReflection();const out=document.getElementById('reflectionOutput');if(!out||!out.textContent.includes('Log refleksi'))return;const blob=new Blob([out.innerText],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='log-refleksi-angkasawan.txt';a.click();URL.revokeObjectURL(a.href);}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+renderPhase();drawShareBoard();updateProgress();
+</script>
+</body>
+</html>
