@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refleksi Selepas Misi | Angkasa Kata</title>
+<style>
+  :root {
+    --navy: #111744;
+    --purple: #7137d8;
+    --pink: #ff66b3;
+    --cyan: #67e8f9;
+    --yellow: #ffe66d;
+    --white: #fffdfd;
+    --mint: #b8ffda;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--white);
+    font-family: "Trebuchet MS", "Comic Sans MS", system-ui, sans-serif;
+    background:
+      radial-gradient(circle at 12% 18%, #5539a8 0 2px, transparent 3px),
+      radial-gradient(circle at 86% 14%, #fff 0 2px, transparent 3px),
+      radial-gradient(circle at 22% 76%, #67e8f9 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 82%, #ffdb70 0 2px, transparent 3px),
+      linear-gradient(145deg, #10143d, #31216d 55%, #14285b);
+    background-size: 140px 140px, 190px 190px, 170px 170px, 210px 210px, auto;
+    padding: 24px 14px 40px;
+  }
+  .shell { max-width: 860px; margin: 0 auto; }
+  .topline {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 10px; flex-wrap: wrap; margin-bottom: 16px;
+  }
+  .brand {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 13px; border: 1px solid #ffffff44;
+    background: #ffffff12; border-radius: 999px; font-size: .9rem;
+  }
+  .sound-btn, .secondary-btn {
+    border: 0; border-radius: 999px; padding: 10px 15px;
+    font: inherit; font-weight: 800; cursor: pointer;
+    color: var(--navy); background: var(--yellow);
+    box-shadow: 0 4px 0 #d9ad31; transition: transform .15s;
+  }
+  button:hover { transform: translateY(-2px); }
+  button:active { transform: translateY(2px); box-shadow: none; }
+  .hero { text-align: center; padding: 8px 10px 18px; }
+  .planet { font-size: clamp(3.2rem, 10vw, 5.3rem); line-height: 1.1; filter: drop-shadow(0 8px 10px #0004); }
+  h1 { margin: 12px 0 8px; font-size: clamp(1.9rem, 6vw, 3.15rem); line-height: 1.08; }
+  h1 span { color: var(--yellow); }
+  .intro { max-width: 620px; margin: 0 auto; color: #e8e8ff; line-height: 1.6; font-size: 1.02rem; }
+  .dashboard {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0 18px;
+  }
+  .stat {
+    border: 2px solid #ffffff30; border-radius: 18px; padding: 13px 15px;
+    background: #ffffff12; backdrop-filter: blur(8px);
+  }
+  .stat-label { display: block; font-size: .82rem; color: #dcdcff; margin-bottom: 5px; }
+  .stat-value { font-size: 1.35rem; font-weight: 900; letter-spacing: .04em; }
+  .hearts { letter-spacing: 3px; color: #ff76b7; }
+  .progress-track { height: 9px; background: #ffffff28; border-radius: 99px; overflow: hidden; margin-top: 8px; }
+  .progress-fill { width: 100%; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--pink)); transition: width .4s; }
+  .panel {
+    background: var(--white); color: var(--navy); border-radius: 28px;
+    padding: clamp(20px, 5vw, 36px); box-shadow: 0 16px 0 #090d2b55, 0 25px 55px #05091d55;
+    border: 4px solid #ffffff;
+  }
+  .panel-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .heading-icon { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 17px; background: #e9e1ff; font-size: 1.8rem; flex: 0 0 auto; }
+  h2 { margin: 0; font-size: clamp(1.35rem, 4vw, 1.8rem); }
+  .helper { color: #5a5d7d; line-height: 1.55; margin: 8px 0 18px; }
+  label { display: block; font-weight: 900; margin: 15px 0 8px; }
+  input, textarea {
+    width: 100%; border: 2px solid #d8d7ef; border-radius: 15px; padding: 14px 15px;
+    font: inherit; color: var(--navy); background: #fbfaff; outline: none;
+  }
+  input:focus, textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 4px #7137d822; }
+  textarea { min-height: 155px; resize: vertical; line-height: 1.6; }
+  .prompt-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+  .chip { background: #eafaff; border: 1px solid #b8eff8; border-radius: 999px; padding: 8px 11px; color: #17506b; font-size: .88rem; cursor: pointer; font-weight: 800; }
+  .chip:hover { background: #d5f7ff; }
+  .counter { text-align: right; color: #777995; font-size: .85rem; margin-top: 6px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .primary-btn {
+    flex: 1 1 210px; border: 0; border-radius: 15px; padding: 14px 18px;
+    color: white; background: linear-gradient(135deg, #7544e8, #a64fe8);
+    box-shadow: 0 5px 0 #4a239e; font: inherit; font-weight: 900; cursor: pointer;
+  }
+  .secondary-btn { background: #dcfaff; box-shadow: 0 4px 0 #8edbe8; }
+  .notice { min-height: 28px; margin-top: 15px; font-weight: 800; line-height: 1.45; }
+  .notice.good { color: #087d50; } .notice.bad { color: #bd275c; }
+  .saved-card { display: none; margin-top: 16px; border-radius: 16px; padding: 16px; background: #effff6; border: 2px dashed #72dba9; }
+  .saved-card h3 { margin: 0 0 8px; } .saved-card p { white-space: pre-wrap; line-height: 1.6; margin: 0; }
+  .footer { text-align: center; color: #dcdcff; font-size: .85rem; margin: 24px 8px 0; line-height: 1.6; }
+  .tiny { font-size: .78rem; opacity: .85; }
+  .floating-star { position: fixed; pointer-events: none; animation: float 5s ease-in-out infinite; opacity: .8; }
+  .star-a { top: 20%; left: 3%; font-size: 1.5rem; } .star-b { top: 63%; right: 4%; font-size: 1.8rem; animation-delay: -2s; }
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-12px) rotate(12deg); } }
+  @media (max-width: 520px) {
+    body { padding: 15px 10px 28px; }
+    .dashboard { gap: 8px; }
+    .stat { padding: 11px; }
+    .stat-value { font-size: 1.15rem; }
+    .panel { border-radius: 22px; }
+    .sound-btn { padding: 9px 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="floating-star star-a" aria-hidden="true">✨</div>
+<div class="floating-star star-b" aria-hidden="true">⭐</div>
+<main class="shell">
+  <div class="topline">
+    <div class="brand">🚀 <strong>ANGKASA KATA</strong> <span>· Pusat Kawalan Misi</span></div>
+    <button class="sound-btn" id="soundToggle" type="button" aria-pressed="false">🔊 Bunyi: OFF</button>
+  </div>
+
+  <header class="hero">
+    <div class="planet" aria-hidden="true">🪐</div>
+    <h1>Refleksi Selepas <span>Misi</span></h1>
+    <p class="intro">Syabas, angkasawan bahasa! 🌟 Sebelum pulang ke Bumi, ceritakan pengalaman kamu selepas menyelesaikan misi Angkasa Kata.</p>
+  </header>
+
+  <section class="dashboard" aria-label="Status misi">
+    <div class="stat">
+      <span class="stat-label">⏱️ Masa refleksi</span>
+      <div class="stat-value" id="timer">02:00</div>
+      <div class="progress-track"><div class="progress-fill" id="timeBar"></div></div>
+    </div>
+    <div class="stat">
+      <span class="stat-label">💖 Nyawa angkasawan</span>
+      <div class="stat-value hearts" id="hearts" aria-label="3 nyawa">❤️ ❤️ ❤️</div>
+      <span class="tiny" id="lifeText">Kamu ada 3 nyawa. Gunakan dengan bijak!</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-heading">
+      <div class="heading-icon" aria-hidden="true">📝</div>
+      <div>
+        <h2>Catatan Angkasawan</h2>
+        <div class="tiny" style="color:#666987;margin-top:4px;">Misi terakhir: fikir, tulis dan kongsi!</div>
+      </div>
+    </div>
+    <p class="helper">Tulis refleksi ringkas tentang apa yang kamu pelajari. Kamu boleh gunakan idea di bawah untuk membantu kamu bermula.</p>
+
+    <label for="studentName">Nama angkasawan (pilihan)</label>
+    <input id="studentName" type="text" maxlength="40" placeholder="Contoh: Kapten Aiman" autocomplete="off">
+
+    <label for="reflection">Refleksi saya <span style="color:#d94a83;">*</span></label>
+    <textarea id="reflection" maxlength="500" placeholder="Selepas menyelesaikan misi ini, saya belajar bahawa...&#10;Bahagian yang paling saya suka ialah...&#10;Saya masih ingin belajar tentang..." aria-describedby="counter"></textarea>
+    <div class="counter" id="counter">0 / 500 aksara</div>
+
+    <div class="prompt-chips" aria-label="Idea untuk refleksi">
+      <button class="chip" type="button" data-prompt="Saya belajar bahawa ">💡 Saya belajar...</button>
+      <button class="chip" type="button" data-prompt="Bahagian yang paling saya suka ialah ">🌟 Saya paling suka...</button>
+      <button class="chip" type="button" data-prompt="Perkara yang masih mencabar bagi saya ialah ">🧩 Cabaran saya...</button>
+    </div>
+
+    <div class="actions">
+      <button class="primary-btn" id="submitBtn" type="button">🚀 Simpan Refleksi</button>
+      <button class="secondary-btn" id="resetBtn" type="button">↻ Mula Semula</button>
+    </div>
+    <div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+    <div class="saved-card" id="savedCard">
+      <h3>🎉 Refleksi berjaya disediakan!</h3>
+      <p id="savedText"></p>
+      <p class="tiny" style="margin-top:10px;color:#27634b;">Nota: Refleksi ini dipaparkan pada peranti ini sahaja. Untuk guru menerima jawapan murid, sambungkan borang ini kepada perkhidmatan penghantaran data yang sesuai.</p>
+      <div class="actions">
+        <button class="secondary-btn" type="button" id="copyBtn">📋 Salin refleksi</button>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer">🌍 Ingat, setiap kesilapan ialah peluang untuk belajar!<br><strong>ANGKASA KATA: Misi Penyelamat Galaksi</strong><br>Teruskan meneroka, angkasawan bahasa! 🚀</p>
+</main>
+
+<script>
+(() => {
+  const TOTAL_SECONDS = 120;
+  let secondsLeft = TOTAL_SECONDS;
+  let timerId = null;
+  let lives = 3;
+  let soundOn = false;
+  let audioContext = null;
+  let finished = false;
+
+  const timerEl = document.getElementById('timer');
+  const timeBar = document.getElementById('timeBar');
+  const heartsEl = document.getElementById('hearts');
+  const lifeText = document.getElementById('lifeText');
+  const reflectionEl = document.getElementById('reflection');
+  const nameEl = document.getElementById('studentName');
+  const counterEl = document.getElementById('counter');
+  const noticeEl = document.getElementById('notice');
+  const savedCard = document.getElementById('savedCard');
+  const savedText = document.getElementById('savedText');
+  const submitBtn = document.getElementById('submitBtn');
+  const soundToggle = document.getElementById('soundToggle');
+
+  function beep(freq = 660, duration = 0.12, type = 'sine') {
+    if (!soundOn) return;
+    try {
+      audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+      if (audioContext.state === 'suspended') audioContext.resume();
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      oscillator.type = type;
+      oscillator.frequency.value = freq;
+      gain.gain.setValueAtTime(0.07, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+      oscillator.connect(gain); gain.connect(audioContext.destination);
+      oscillator.start(); oscillator.stop(audioContext.currentTime + duration);
+    } catch (e) { /* Bunyi tidak disokong oleh sesetengah pelayar. */ }
+  }
+  function showNotice(message, type = '') {
+    noticeEl.textContent = message;
+    noticeEl.className = 'notice' + (type ? ' ' + type : '');
+  }
+  function renderTimer() {
+    const m = Math.floor(secondsLeft / 60).toString().padStart(2, '0');
+    const s = (secondsLeft % 60).toString().padStart(2, '0');
+    timerEl.textContent = `${m}:${s}`;
+    timeBar.style.width = `${(secondsLeft / TOTAL_SECONDS) * 100}%`;
+    if (secondsLeft <= 20) timerEl.style.color = '#ffb1cf';
+    else timerEl.style.color = '#ffffff';
+  }
+  function renderLives() {
+    heartsEl.textContent = '❤️ '.repeat(lives).trim() || '—';
+    heartsEl.setAttribute('aria-label', `${lives} nyawa`);
+    lifeText.textContent = lives > 0 ? `Kamu ada ${lives} nyawa. Teruskan mencuba!` : 'Nyawa habis! Tekan Mula Semula untuk cuba lagi.';
+  }
+  function startTimer() {
+    clearInterval(timerId);
+    timerId = setInterval(() => {
+      if (finished) return;
+      secondsLeft = Math.max(0, secondsLeft - 1);
+      renderTimer();
+      if (secondsLeft === 20) beep(440, 0.2);
+      if (secondsLeft === 0) {
+        clearInterval(timerId);
+        showNotice('⏰ Masa tamat! Kamu masih boleh simpan refleksi yang telah ditulis.', 'bad');
+        beep(260, 0.3, 'triangle');
+      }
+    }, 1000);
+  }
+
+  soundToggle.addEventListener('click', () => {
+    soundOn = !soundOn;
+    soundToggle.textContent = soundOn ? '🔊 Bunyi: ON' : '🔇 Bunyi: OFF';
+    soundToggle.setAttribute('aria-pressed', String(soundOn));
+    if (soundOn) { beep(660); setTimeout(() => beep(880), 130); }
+  });
+
+  reflectionEl.addEventListener('input', () => {
+    counterEl.textContent = `${reflectionEl.value.length} / 500 aksara`;
+  });
+
+  document.querySelectorAll('[data-prompt]').forEach(button => {
+    button.addEventListener('click', () => {
+      const prompt = button.dataset.prompt;
+      if (!reflectionEl.value.trim()) reflectionEl.value = prompt;
+      else reflectionEl.value += (reflectionEl.value.endsWith(' ') ? '' : ' ') + prompt;
+      reflectionEl.focus();
+      counterEl.textContent = `${reflectionEl.value.length} / 500 aksara`;
+      beep(580);
+    });
+  });
+
+  submitBtn.addEventListener('click', () => {
+    const reflection = reflectionEl.value.trim();
+    if (!reflection) {
+      lives = Math.max(0, lives - 1);
+      renderLives();
+      showNotice(lives > 0 ? '🛰️ Refleksi masih kosong. Tulis sekurang-kurangnya satu ayat dahulu!' : '💫 Nyawa habis! Kamu boleh mula semula dan cuba menulis refleksi.', 'bad');
+      beep(230, 0.2, 'triangle');
+      if (lives === 0) submitBtn.disabled = true;
+      return;
+    }
+    const name = nameEl.value.trim() || 'Angkasawan Tanpa Nama';
+    savedText.textContent = `${name}\n\n${reflection}`;
+    savedCard.style.display = 'block';
+    showNotice('🌈 Hebat! Refleksi kamu telah dipaparkan di bawah. Ingat, ia belum dihantar kepada guru.', 'good');
+    finished = true;
+    clearInterval(timerId);
+    beep(660); setTimeout(() => beep(790), 140); setTimeout(() => beep(990), 280);
+    savedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const text = savedText.textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      showNotice('📋 Refleksi disalin. Kamu boleh tampalkannya untuk dikongsi dengan guru.', 'good');
+      beep(750);
+    } catch (e) {
+      const range = document.createRange();
+      range.selectNodeContents(savedText);
+      const selection = window.getSelection();
+      selection.removeAllRanges(); selection.addRange(range);
+      showNotice('Pilih teks refleksi di atas dan salin secara manual.', '');
+    }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    clearInterval(timerId);
+    secondsLeft = TOTAL_SECONDS;
+    lives = 3;
+    finished = false;
+    reflectionEl.value = '';
+    nameEl.value = '';
+    counterEl.textContent = '0 / 500 aksara';
+    savedCard.style.display = 'none';
+    submitBtn.disabled = false;
+    timerEl.style.color = '#ffffff';
+    showNotice('🚀 Misi baharu bermula! Tulis refleksi kamu.', '');
+    renderTimer(); renderLives(); startTimer();
+    beep(520);
+  });
+
+  renderTimer();
+  renderLives();
+  startTimer();
+})();
+</script>
+</body>
+</html>
